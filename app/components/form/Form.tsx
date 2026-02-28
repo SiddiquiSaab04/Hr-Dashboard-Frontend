@@ -7,6 +7,7 @@ export default function Form({
   fields,
   onsubmit,
   submitLabel = "Submit",
+  styleClass = "",
 }: FormProps) {
   const [formData, setFormData] = useState({});
   const handleChange = (name: string, value: any) => {
@@ -28,6 +29,7 @@ export default function Form({
                 name={field.name}
                 required={field.required}
                 onChange={(e) => handleChange(field.name, e.target.value)}
+                className={styleClass}
               ></select>
             ) : field.type === "textarea" ? (
               <textarea
@@ -35,11 +37,13 @@ export default function Form({
                 placeholder={field.placeholder}
                 required={field.required}
                 onChange={(e) => handleChange(field.name, e.target.value)}
+                className={styleClass}
               />
             ) : field.type === "checkbox" ? (
               <input
                 type="checkbox"
                 id={field.name}
+                className={styleClass}
                 onChange={(e) =>
                   handleChange(field.name, e.target.checked.toString())
                 }
@@ -48,6 +52,7 @@ export default function Form({
               <input
                 type="radio"
                 id={field.name}
+                className={styleClass}
                 onChange={(e) =>
                   handleChange(field.name, e.target.checked.toString())
                 }
@@ -58,6 +63,7 @@ export default function Form({
                 type="number"
                 placeholder={field.placeholder}
                 required={field.required}
+                className={styleClass}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "email" ? (
@@ -66,6 +72,7 @@ export default function Form({
                 type="email"
                 placeholder={field.placeholder}
                 required={field.required}
+                className={styleClass}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "password" ? (
@@ -74,6 +81,7 @@ export default function Form({
                 type="password"
                 placeholder={field.placeholder}
                 required={field.required}
+                className={styleClass}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "creatable-select" ? (
@@ -83,6 +91,7 @@ export default function Form({
                 isClearable
                 isSearchable
                 options={field.options}
+                className={styleClass}
                 onChange={(option) =>
                   handleChange(field.name, option ? option.value : "")
                 }
@@ -93,6 +102,7 @@ export default function Form({
                 type={field.type}
                 placeholder={field.placeholder}
                 required={field.required}
+                className={styleClass}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             )}
