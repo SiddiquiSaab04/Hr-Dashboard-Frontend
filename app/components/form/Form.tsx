@@ -3,11 +3,13 @@
 import { useState } from "react";
 import type { Field, FormProps } from "@/app/types/Form";
 import CreatableSelect from "react-select/creatable";
+import Button from "../button/Button";
 export default function Form({
   fields,
   onsubmit,
-  submitLabel = "Submit",
-  styleClass = "",
+  submitLabel = "",
+  fieldStyleClass = "",
+  formStyleClass = "",
 }: FormProps) {
   const [formData, setFormData] = useState({});
   const handleChange = (name: string, value: any) => {
@@ -19,9 +21,9 @@ export default function Form({
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={formStyleClass}>
         {fields.map((field: Field) => (
-          <div key={field.name}>
+          <div key={field.name} className={fieldStyleClass}>
             <label htmlFor={field.name}>{field.label || field.name}</label>
             {field.type === "select" ? (
               <select
@@ -29,7 +31,7 @@ export default function Form({
                 name={field.name}
                 required={field.required}
                 onChange={(e) => handleChange(field.name, e.target.value)}
-                className={styleClass}
+                className={fieldStyleClass}
               ></select>
             ) : field.type === "textarea" ? (
               <textarea
@@ -37,13 +39,13 @@ export default function Form({
                 placeholder={field.placeholder}
                 required={field.required}
                 onChange={(e) => handleChange(field.name, e.target.value)}
-                className={styleClass}
+                className={fieldStyleClass}
               />
             ) : field.type === "checkbox" ? (
               <input
                 type="checkbox"
                 id={field.name}
-                className={styleClass}
+                className={fieldStyleClass}
                 onChange={(e) =>
                   handleChange(field.name, e.target.checked.toString())
                 }
@@ -52,7 +54,7 @@ export default function Form({
               <input
                 type="radio"
                 id={field.name}
-                className={styleClass}
+                className={fieldStyleClass}
                 onChange={(e) =>
                   handleChange(field.name, e.target.checked.toString())
                 }
@@ -63,7 +65,7 @@ export default function Form({
                 type="number"
                 placeholder={field.placeholder}
                 required={field.required}
-                className={styleClass}
+                className={fieldStyleClass}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "email" ? (
@@ -72,7 +74,7 @@ export default function Form({
                 type="email"
                 placeholder={field.placeholder}
                 required={field.required}
-                className={styleClass}
+                className={`${fieldStyleClass} w-full p-1.5 border rounded focus:outline-amber-500`}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "password" ? (
@@ -81,7 +83,7 @@ export default function Form({
                 type="password"
                 placeholder={field.placeholder}
                 required={field.required}
-                className={styleClass}
+                className={`${fieldStyleClass} w-full p-1.5 border rounded focus:outline-amber-500`}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             ) : field.type === "creatable-select" ? (
@@ -91,7 +93,7 @@ export default function Form({
                 isClearable
                 isSearchable
                 options={field.options}
-                className={styleClass}
+                className={`${fieldStyleClass} w-full p-2 border rounded focus:outline-amber-500`}
                 onChange={(option) =>
                   handleChange(field.name, option ? option.value : "")
                 }
@@ -102,12 +104,16 @@ export default function Form({
                 type={field.type}
                 placeholder={field.placeholder}
                 required={field.required}
-                className={styleClass}
+                className={`${fieldStyleClass} w-full p-2 border rounded focus:outline-amber-500`}
                 onChange={(e) => handleChange(field.name, e.target.value)}
               />
             )}
           </div>
         ))}
+        <Button
+          label={submitLabel}
+          styleClass="px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition-colors"
+        />
       </form>
     </>
   );

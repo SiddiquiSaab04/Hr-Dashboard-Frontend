@@ -11,5 +11,6 @@ export type FormProps = {
     fields: Field[];
     onsubmit:(data: any) => void;
     submitLabel?: string;
-    styleClass?: string;
+    fieldStyleClass?: string;
+    formStyleClass?: string;
 }
