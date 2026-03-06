@@ -1,7 +1,7 @@
 const config = {
   plugins: {
     "@tailwindcss/postcss": {},
-    "@shadcn/ui/postcss": {},
+    // "@shadcn/ui/postcss": {},
   },
 };
 
