@@ -1,6 +1,9 @@
+"use client";
 import Link from "next/link";
-
+import { Menulist } from "./menu-list/Menulist";
+import { usePathname } from "next/navigation";
 export default function Menubar() {
+  const pathname = usePathname();
   return (
 
       <div
@@ -8,30 +11,17 @@ export default function Menubar() {
       >
         <div className="p-4 font-bold text-xl">My Sidebar</div>
         <nav className="flex flex-col gap-2 p-4">
-          <Link
-            href="#"
-            className="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="#"
-            className="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            Profile
-          </Link>
-          <Link
-            href="#"
-            className="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            Settings
-          </Link>
-          <Link
-            href="#"
-            className="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            Inbox
-          </Link>
+         {
+          Menulist.map((menu)=>(
+            <Link
+              key={menu.url}
+              href={menu.url}
+              className={`${pathname === menu.url ? "bg-gray-200 dark:bg-gray-800" : "hover:bg-gray-200 dark:hover:bg-gray-800"} px-3 py-2 rounded`}
+            >
+              {menu.name}
+            </Link>
+          ))
+         }
         </nav>
       </div>
   
