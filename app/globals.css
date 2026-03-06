@@ -1,27 +1,25 @@
 @import "tailwindcss";
 
-:root {
-  --color-primary: #3498db;
+@theme {
+  --color-primary: #1C2B2B;
   --color-primary-600: #2978c6;
   --color-muted: #6b7280;
-  --bg: #ffffff;
-  --surface: #f9fafb;
-  --text: #111827;
-  --radius: 8px;
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
+  --bg: #F4F4F0;
+  --surface: #FFFFFF;
+  --text: #F4F4F0;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg);
-  color: var(--text);
 }
 
 .login-container {
   border : 1px solid var(--color-primary);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
 }
+
 
 
 

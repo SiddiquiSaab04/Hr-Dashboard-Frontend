@@ -24,12 +24,13 @@ export default function LoginForm(){
         <div>
             <Form
             formStyleClass="flex flex-col gap-y-4 max-w-[600px] w-full"
-            fieldStyleClass="flex flex-col justify-center items-start my-1 "
+            fieldStyleClass="flex flex-col justify-start items-start gap-y-1"
             fields={fields}
             onsubmit={(data) => {
                 console.log("Form submitted with data:", data);
             }}
             submitLabel="Login"
+            submitBtnStyleClass="border border-primary p-2 rounded-md bg-primary text-white hover:bg-primary/90 transition cursor-pointer"
         />
         </div>
     )

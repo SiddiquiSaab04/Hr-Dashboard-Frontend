@@ -13,4 +13,5 @@ export type FormProps = {
     submitLabel?: string;
     fieldStyleClass?: string;
     formStyleClass?: string;
+    submitBtnStyleClass?: string;
 }
