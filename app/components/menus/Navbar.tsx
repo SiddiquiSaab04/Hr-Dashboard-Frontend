@@ -10,8 +10,6 @@ export default function Navbar() {
        <Heading headingStyleClass="font-semibold"  heading="HR Dashboard" />
        <Button label="logout" styleClass="text-lg font-light gap-x-2 bg-red-100 py-1 px-2 rounded-md text-red-500 border border-red-500" icons={<LogOutIcon size={15} />} />
       </div>
-      
-    
     </header>
   );
 }

@@ -1,4 +1,3 @@
-"use client";
 import LoginForm from "@/app/components/form/LoginForm";
 import { Heading } from "@/app/components/headings/Heading";
 import Template from "@/app/components/layout/template/Template";
